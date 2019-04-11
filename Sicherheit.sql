@@ -20,8 +20,8 @@ CREATE TABLE IF NOT EXISTS `Carros` (
 );
 
 CREATE TABLE IF NOT EXISTS `Ocorrencias` (
-    `Codigo` INT PRIMARY KEY AUTO_INCREMENT
-    `Placa_Carro` VARCHAR(7) PRIMARY KEY,
+    `Codigo` INT PRIMARY KEY AUTO_INCREMENT,
+    `Placa_Carro` VARCHAR(7) NOT NULL,
     `Data` DATE NOT NULL,
     `Local` VARCHAR(120) NOT NULL,
     `Descricao` VARCHAR(120) NOT NULL
