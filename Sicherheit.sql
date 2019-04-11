@@ -1,12 +1,12 @@
 CREATE DATABASE IF NOT EXISTS `Sicherheit`;
 
-USE `Sicherheit`
+USE `Sicherheit`;
 
 CREATE TABLE IF NOT EXISTS `Clientes` (
     `RG` VARCHAR(15) PRIMARY KEY,
     `CPF` VARCHAR(15) NOT NULL,
     `Nome` VARCHAR(150) NOT NULL,
-    `Endereço` VARCHAR(200),
+    `Endereço` VARCHAR(200) NOT NULL,
     `Telefone` VARCHAR(25) NOT NULL
 );
 
