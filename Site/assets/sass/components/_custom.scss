@@ -1,0 +1,32 @@
+// Custom gradient background
+
+.gradient-green {
+    background: linear-gradient(to right, $primary-color-dark, $primary-color);
+}
+
+.gradient-blue {
+    background: linear-gradient(to right, $custom-blue-dark, $custom-blue);
+}
+
+.gradient-yellow {
+    background: linear-gradient(to right, $secondary-color-dark, $secondary-color);   
+}
+
+.gradient-red {
+    background: linear-gradient(to right, $error-color-dark, $error-color);   
+}
+
+// Text
+
+.title {
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+// Cards
+
+.card-icon {
+    margin-top: -4rem;
+    font-size: 4rem !important;
+    color: inherit;
+}
