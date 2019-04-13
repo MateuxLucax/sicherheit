@@ -2,7 +2,7 @@
 
 html {
  box-sizing: border-box;
- background: #F5F5F5;
+ background: $background-color-deafult;
 }
 *, *:before, *:after {
  box-sizing: inherit;
@@ -38,8 +38,12 @@ ul {
 }
 
 a {
-	color: $link-color;
-	text-decoration: none;
+	color: $black;
+  text-decoration: none;
+  
+  &:hover {
+    color: rgba($black, 0.5);
+  }
 
   // Gets rid of tap active state
   -webkit-tap-highlight-color: transparent;
@@ -389,6 +393,16 @@ ul.staggered-list li {
     padding: 10px 0px;
     color: $footer-copyright-font-color;
     background-color: $footer-copyright-bg-color;
+  }
+
+  a {
+   color: $primary-color;
+   transition: color .3s;
+
+    &:hover {
+      color: $primary-color-dark;
+    }
+
   }
 }
 

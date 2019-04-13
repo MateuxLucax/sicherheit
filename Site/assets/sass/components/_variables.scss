@@ -34,13 +34,19 @@
 // 1. Colors
 // ==========================================================================
 
-$primary-color: #49B86E !default;
+$primary-color: #4CA649 !default;
 $primary-color-light: lighten($primary-color, 30%) !default;
-$primary-color-dark: #2B6C4F !default;
+$primary-color-dark: #2E732C !default;
+$background-color-deafult: #FFFFFF !default;
+$black: #000 !default;
+$custom-blue: #AEDFF2 !default;
+$custom-blue-dark: #4A9AB9 !default;
+$secondary-color-dark: #D3B000 !default;
+$error-color-dark: #9C2121 !default;
 
-$secondary-color: #29718F !default;
+$secondary-color: #F2D857 !default;
 $success-color: $primary-color !default;
-$error-color: #802927 !default;
+$error-color: #F23838 !default;
 $link-color: $primary-color-dark !default;
 
 
@@ -247,7 +253,7 @@ $navbar-line-height: $navbar-height !default;
 $navbar-height-mobile: 56px !default;
 $navbar-line-height-mobile: $navbar-height-mobile !default;
 $navbar-font-size: 1rem !default;
-$navbar-font-color: #fff !default;
+$navbar-font-color: $primary-color !default;
 $navbar-brand-font-size: 2.1rem !default;
 
 // 14. Side Navigation
@@ -255,8 +261,8 @@ $navbar-brand-font-size: 2.1rem !default;
 
 $sidenav-width: 300px !default;
 $sidenav-font-size: 14px !default;
-$sidenav-font-color: rgba(0,0,0,.87) !default;
-$sidenav-bg-color: #fff !default;
+$sidenav-font-color: $primary-color !default;
+$sidenav-bg-color: $background-color-deafult !default;
 $sidenav-padding: 16px !default;
 $sidenav-item-height: 48px !default;
 $sidenav-line-height: $sidenav-item-height !default;
@@ -317,10 +323,10 @@ $h6-fontsize: 1.15rem !default;
 // 21. Footer
 // ==========================================================================
 
-$footer-font-color: #fff !default;
-$footer-bg-color: $primary-color !default;
-$footer-copyright-font-color: rgba(255,255,255,.8) !default;
-$footer-copyright-bg-color: rgba(51,51,51,.08) !default;
+$footer-font-color: $black !default;
+$footer-bg-color: $background-color-deafult !default;
+$footer-copyright-font-color: $black !default;
+$footer-copyright-bg-color: $background-color-deafult !default;
 
 
 // 22. Flow Text

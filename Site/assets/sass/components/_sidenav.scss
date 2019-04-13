@@ -35,7 +35,6 @@
     float: none;
     line-height: $sidenav-line-height;
 
-    &.active { background-color: rgba(0,0,0,.05); }
   }
 
   li > a {
@@ -46,8 +45,43 @@
     height: $sidenav-item-height;
     line-height: $sidenav-line-height;
     padding: 0 ($sidenav-padding * 2);
+    position: relative;
+    transition: all .3s;
+    
+    .material-icons {
+      color: $primary-color !important;
+    }
 
-    &:hover { background-color: rgba(0,0,0,.05);}
+    &:after {
+      content: '';
+      position: absolute;
+      border-left: 5px solid $primary-color-dark;
+      bottom: .2rem;
+      left: 0;
+      top: 100%;
+      transition: all .3s;
+    }
+
+    &.active {
+      color: $primary-color-dark;
+      .material-icons {
+        color: $primary-color-dark !important;
+      }
+      &:after {
+        top: .1rem;
+      }
+    }
+
+
+    &:hover {
+      color: $primary-color-dark;
+      .material-icons {
+        color: $primary-color-dark !important;
+      }
+      &:after {
+        top: .1rem;
+      }
+    }
 
     &.btn, &.btn-large, &.btn-flat, &.btn-floating {
       margin: 10px 15px;

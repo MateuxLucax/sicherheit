@@ -14,8 +14,7 @@ nav {
   }
 
   color: $navbar-font-color;
-  @extend .z-depth-1;
-  background-color: $primary-color;
+  background-color: $background-color-deafult;
   width: 100%;
   height: $navbar-height-mobile;
   line-height: $navbar-line-height-mobile;
@@ -69,6 +68,10 @@ nav {
       transform: translateX(-50%);
     }
 
+    & img {
+      height: 4rem;
+    }
+
     @media #{$medium-and-down} {
       left: 50%;
       transform: translateX(-50%);
@@ -115,13 +118,11 @@ nav {
       transition: background-color .3s;
       float: left;
       padding: 0;
+      position: relative;
 
-      &.active {
-        background-color: rgba(0,0,0,.1);
-      }
     }
     a {
-      transition: background-color .3s;
+      transition: all .3s;
       font-size: $navbar-font-size;
       color: $navbar-font-color;
       display: block;
@@ -139,9 +140,32 @@ nav {
         }
       }
 
-      &:hover {
-        background-color: rgba(0,0,0,.1);
+      &:after {
+        content: '';
+        position: absolute;
+        border-bottom: .1rem solid $primary-color-dark;
+        bottom: 0;
+        left: .2rem;
+        right: 100%;
+        transition: all .3s;
       }
+
+      &.active {
+        color: $primary-color-dark;
+        &:after {
+          right: .2rem;
+          left: .4rem;
+        }
+      }
+
+
+      &:hover {
+        color: $primary-color-dark;
+        &:after {
+          right: .2rem;
+        }
+      }
+
     }
 
     &.left {
