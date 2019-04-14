@@ -23,6 +23,27 @@
     font-weight: 700;
 }
 
+.alterar {
+    color: $primary-color;
+    &:hover {
+        color: $primary-color-dark;
+    }
+}
+
+.excluir {
+    color: $error-color;
+    &:hover {
+        color: $error-color-dark;
+    }
+}
+
+.adicionar {
+    color: $secondary-color;
+    &:hover {
+        color: $secondary-color-dark;
+    }
+}
+
 // Cards
 
 .card-icon {
