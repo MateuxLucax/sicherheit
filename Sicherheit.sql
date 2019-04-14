@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS `Clientes` (
 
 CREATE TABLE IF NOT EXISTS `Carros` (
     `Placa` VARCHAR(7) PRIMARY KEY,
-    `Fabricante` VARCHAR(120) NOT NULL,
+    `Fabricante` VARCHAR(40) NOT NULL,
     `Modelo` VARCHAR(120) NOT NULL,
     `Ano` DATE NOT NULL,
     `RG_Cliente` VARCHAR(15) NOT NULL,
@@ -24,5 +24,6 @@ CREATE TABLE IF NOT EXISTS `Ocorrencias` (
     `Placa_Carro` VARCHAR(7) NOT NULL,
     `Data` DATE NOT NULL,
     `Local` VARCHAR(120) NOT NULL,
-    `Descricao` VARCHAR(120) NOT NULL
+    `Descricao` VARCHAR(240) NOT NULL
+    FOREIGN KEY (`Placa_Carro`) REFERENCES `Carros`(`Placa`);
 );
