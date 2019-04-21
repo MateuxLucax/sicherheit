@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 
+<!-- Inicialização do código -->
+<?php
+
+  include 'funcoes.php';
+	include 'connect/connect.php';
+  $nomeTabela = $tabelaCliente;
+    
+?>
+
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -25,13 +34,13 @@
       <div class="navbar-fixed">
         <nav>
           <div class="nav-wrapper container">
-            <a href="index.html" class="brand-logo"><img src="assets/img/logo-sicherheit.png" alt="Logo Sicherheit"></a>
+            <a href="index.php" class="brand-logo"><img src="assets/img/logo-sicherheit.png" alt="Logo Sicherheit"></a>
             <a href="#" data-target="mobile-sidenav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
-              <li><a class="active" href="index.html">Painel de controle</a></li>
-              <li><a href="clientes.html">Clientes</a></li>
-              <li><a href="carros.html">Carros</a></li>
-              <li><a href="ocorrencias.html">Ocorrências</a></li>
+              <li><a class="active" href="index.php">Painel de controle</a></li>
+              <li><a href="clientes.php">Clientes</a></li>
+              <li><a href="carros.php">Carros</a></li>
+              <li><a href="ocorrencias.php">Ocorrências</a></li>
             </ul>
           </div>
         </nav>
@@ -39,10 +48,10 @@
         
       <!-- Sidenav mobile -->
       <ul class="sidenav" id="mobile-sidenav">
-        <li><a class="active" href="index.html"><i class="material-icons">dashboard</i>Painel de controle</a></li>
-        <li><a href="clientes.html"><i class="material-icons">assignment_ind</i>Clientes</a></li>
-        <li><a href="carros.html"><i class="material-icons">directions_car</i>Carros</a></li>
-        <li><a href="ocorrencias.html"><i class="material-icons">commute</i>Ocorrências</a></li>
+        <li><a class="active" href="index.php"><i class="material-icons">dashboard</i>Painel de controle</a></li>
+        <li><a href="clientes.php"><i class="material-icons">assignment_ind</i>Clientes</a></li>
+        <li><a href="carros.php"><i class="material-icons">directions_car</i>Carros</a></li>
+        <li><a href="ocorrencias.php"><i class="material-icons">commute</i>Ocorrências</a></li>
       </ul>
 
   </header>
@@ -57,7 +66,7 @@
             <a href="clientes.html">
               <div class="card-panel gradient-green hoverable white-text">
                 <h5 class="left-align title">Clientes</h5>
-                <h6 class="left title">123</h6>
+                <h6 class="left title"><?php echo countSQL($tabelaCliente, 'RG'); ?></h6>
                 <h5 class="right-align"><i class="material-icons card-icon">assignment_ind</i></h5>
               </div>
             </a>  
@@ -68,7 +77,7 @@
             <a href="carros.html">
               <div class="card-panel gradient-red hoverable white-text">
                 <h5 class="left-align title">Carros</h5>
-                <h6 class="left title">213</h6>
+                <h6 class="left title"><?php echo countSQL($tabelaCarro, 'Placa'); ?></h6>
                 <h5 class="right-align"><i class="material-icons card-icon">directions_car</i></h5>
               </div>
             </a>  
@@ -79,7 +88,7 @@
             <a href="ocorrencias.html">
               <div class="card-panel gradient-blue hoverable white-text">
                 <h5 class="left-align title">Ocorrências</h5>
-                <h6 class="left title">54</h6>
+                <h6 class="left title"><?php echo countSQL($tabelaOcorrencia, 'Codigo'); ?></h6>
                 <h5 class="right-align"><i class="material-icons card-icon">commute</i></h5>
               </div>
             </a>  
@@ -87,6 +96,14 @@
         </div>
 
     </div>
+    
+    <!-- Filtros e SQL -->
+    <?php
+        
+        $sql = "SELECT * FROM ". $nomeTabela;
+        $resultado = mysqli_query ($conexao, $sql);
+        
+    ?>
 
     <div class="section">
 
@@ -96,7 +113,7 @@
             <thead>
               <tr class="title">
                 <th>Clientes</th>
-                <th>CPF</th>
+                <th>RG</th>
                 <th>Telefone</th>
                 <th>Número de carros</th>
                 <th>Número de ocorrências</th>
@@ -104,34 +121,16 @@
             </thead>
     
             <tbody>
+              
+              <?php while ($tupla = mysqli_fetch_array($resultado)) { ?>
               <tr>
-                <td>Alvin</td>
-                <td>123.342.124-21</td>
-                <td><a href="tel:+5548912322134">(48) 91232-2134</a></td>
-                <td>2</td>
-                <td>0</td>
+                <td><?php echo $tupla['Nome']; ?></td>
+                <td><?php echo $tupla['RG']; ?></td>
+                <td><?php echo $tupla['Telefone']; ?></td>
+                <td><?php echo countSQLEspecifico($tabelaCarro, 'Placa', 'RG_Cliente', $tupla['RG']); ?></td>
+                <td><?php echo countSQLComplexo($tupla['RG']); ?></td>
               </tr>
-              <tr>
-                <td>Mateus</td>
-                <td>123.342.124-21</td>
-                <td><a href="tel:+5547988819255">(47) 98881-9255</a></td>
-                <td>1</td>
-                <td>0</td>
-              </tr>
-              <tr>
-                <td>Leonardo</td>
-                <td>123.342.124-21</td>
-                <td><a href="tel:+5547965349876">(47) 96534-9876</a></td>
-                <td>12345</td>
-                <td>123</td>
-              </tr>
-              <tr>
-                <td>Cristian</td>
-                <td>234.243.543-94</td>
-                <td><a href="tel:+5547926341324">(47) 92634-1324</a></td>
-                <td>2123</td>
-                <td>123</td>
-              </tr>
+              <?php } ?>
             </tbody>
           </table>
         </div>
