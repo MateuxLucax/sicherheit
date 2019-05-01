@@ -5,7 +5,7 @@
 <?php
 
   include 'funcoes.php';
-	include 'connect/connect.php';
+  include 'connect/connect.php';
   $nomeTabela = $tabelaCliente;
     
 ?>
@@ -63,7 +63,7 @@
         <div class="row">
           <!-- Cartão clientes -->
           <div class="col s12 m6 l4">
-            <a href="clientes.html">
+            <a href="clientes.php">
               <div class="card-panel gradient-green hoverable white-text">
                 <h5 class="left-align title">Clientes</h5>
                 <h6 class="left title"><?php echo countSQL($tabelaCliente, 'RG'); ?></h6>
@@ -74,7 +74,7 @@
 
           <!-- Cartão carros -->
           <div class="col s12 m6 l4">
-            <a href="carros.html">
+            <a href="carros.php">
               <div class="card-panel gradient-red hoverable white-text">
                 <h5 class="left-align title">Carros</h5>
                 <h6 class="left title"><?php echo countSQL($tabelaCarro, 'Placa'); ?></h6>
@@ -85,7 +85,7 @@
 
           <!-- Cartão ocorrências -->
           <div class="col s12 m6 offset-m3 l4">
-            <a href="ocorrencias.html">
+            <a href="ocorrencias.php">
               <div class="card-panel gradient-blue hoverable white-text">
                 <h5 class="left-align title">Ocorrências</h5>
                 <h6 class="left title"><?php echo countSQL($tabelaOcorrencia, 'Codigo'); ?></h6>
@@ -122,13 +122,17 @@
     
             <tbody>
               
-              <?php while ($tupla = mysqli_fetch_array($resultado)) { ?>
+              <?php
+                while ($tupla = mysqli_fetch_array($resultado)) { 
+                $numeroOcorrencias = countSQLAninhado('Codigo', $tabelaOcorrencia, $tabelaCarro, 'Placa_Carro', 'RG_Cliente', 'Placa_Carro', $tupla['RG']);
+                $numeroCarros = countSQLComCondicao($tabelaCarro, 'Placa', 'RG_Cliente', $tupla['RG']); 
+              ?>
               <tr>
                 <td><?php echo $tupla['Nome']; ?></td>
                 <td><?php echo $tupla['RG']; ?></td>
                 <td><?php echo $tupla['Telefone']; ?></td>
-                <td><?php echo countSQLEspecifico($tabelaCarro, 'Placa', 'RG_Cliente', $tupla['RG']); ?></td>
-                <td><?php echo countSQLComplexo($tupla['RG']); ?></td>
+                <td><?php echo $numeroCarros > 0 ? $numeroCarros : 0; ?></td>
+                <td><?php echo $numeroOcorrencias > 0 ? $numeroOcorrencias : 0 ; ?></td>
               </tr>
               <?php } ?>
             </tbody>
