@@ -108,12 +108,14 @@ elseif ($tabela == $tabelaOcorrencia) {
         $placaCarro = $_POST['placaCarro']; // Chave estrangeira
         $data = converterDataYmd($_POST['data']);
         $local = $_POST['local'];
+        $valorMulta = $_POST['valorMulta'];
         $descricao = $_POST['descricao'];
         $sql = "INSERT INTO ". $tabela.
                " VALUE ( null, 
                         '". $placaCarro. "', 
                         '". $data. "', 
                         '". $local."', 
+                        ". $valorMulta. ", 
                         '". $descricao."')";
     }
 
@@ -123,11 +125,13 @@ elseif ($tabela == $tabelaOcorrencia) {
         $placaCarro = $_POST['placaCarro']; // Chave estrangeira
         $data = converterDataYmd($_POST['data']);
         $local = $_POST['local'];
+        $valorMulta = $_POST['valorMulta'];
         $descricao = $_POST['descricao'];
         $sql = "UPDATE  ". $tabela.
                " SET  Placa_Carro = '". $placaCarro. "', 
                       Data =  '". $data. "', 
                       Local =  '". $local."', 
+                      Valor_Multa = ". $valorMulta.", 
                       Descricao =  '". $descricao."' 
                 WHERE Codigo = '". $codigo. "'";
     }

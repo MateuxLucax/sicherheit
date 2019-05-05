@@ -9,11 +9,11 @@
 }
 
 .gradient-yellow {
-    background: linear-gradient(to right, $secondary-color-dark, $secondary-color);   
+    background: linear-gradient(to right, $secondary-color-dark, $secondary-color);
 }
 
 .gradient-red {
-    background: linear-gradient(to right, $error-color-dark, $error-color);   
+    background: linear-gradient(to right, $error-color-dark, $error-color);
 }
 
 // Text
@@ -50,4 +50,22 @@
     margin-top: -4rem;
     font-size: 4rem !important;
     color: inherit;
+}
+
+// Helpers
+
+.inline {
+  display: inline;
+}
+
+.margin-right-small {
+  margin-right: 3rem !important;
+}
+
+.margin-bottom-small {
+  margin-bottom: 2rem !important;
+}
+
+.margin-top-small {
+    margin-top: 4rem !important;
 }

@@ -5,9 +5,9 @@
 <?php
 
   include 'funcoes.php';
-  include 'connect/connect.php';
+	include 'connect/connect.php';
   $nomeTabela = $tabelaCliente;
-    
+
 ?>
 
 <head>
@@ -15,21 +15,21 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
   <title>Painel de controle - Sicherheit</title>
-	
+
   <!-- Favicon -->
   <link rel="shortcut icon" href="assets/img/favicon.png" />
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
-  
+
   <!-- CSS -->
   <link href="assets/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 </head>
 
 <body>
   <header>
-  
+
       <!-- Cabeçalho -->
       <div class="navbar-fixed">
         <nav>
@@ -45,7 +45,7 @@
           </div>
         </nav>
       </div>
-        
+
       <!-- Sidenav mobile -->
       <ul class="sidenav" id="mobile-sidenav">
         <li><a class="active" href="index.php"><i class="material-icons">dashboard</i>Painel de controle</a></li>
@@ -59,7 +59,7 @@
 
     <!-- Cartões de informação geral -->
     <div class="section">
-        
+
         <div class="row">
           <!-- Cartão clientes -->
           <div class="col s12 m6 l4">
@@ -69,7 +69,7 @@
                 <h6 class="left title"><?php echo countSQL($tabelaCliente, 'RG'); ?></h6>
                 <h5 class="right-align"><i class="material-icons card-icon">assignment_ind</i></h5>
               </div>
-            </a>  
+            </a>
           </div>
 
           <!-- Cartão carros -->
@@ -80,7 +80,7 @@
                 <h6 class="left title"><?php echo countSQL($tabelaCarro, 'Placa'); ?></h6>
                 <h5 class="right-align"><i class="material-icons card-icon">directions_car</i></h5>
               </div>
-            </a>  
+            </a>
           </div>
 
           <!-- Cartão ocorrências -->
@@ -91,18 +91,18 @@
                 <h6 class="left title"><?php echo countSQL($tabelaOcorrencia, 'Codigo'); ?></h6>
                 <h5 class="right-align"><i class="material-icons card-icon">commute</i></h5>
               </div>
-            </a>  
+            </a>
           </div>
         </div>
 
     </div>
-    
+
     <!-- Filtros e SQL -->
     <?php
-        
+
         $sql = "SELECT * FROM ". $nomeTabela;
         $resultado = mysqli_query ($conexao, $sql);
-        
+
     ?>
 
     <div class="section">
@@ -119,13 +119,13 @@
                 <th>Número de ocorrências</th>
               </tr>
             </thead>
-    
+
             <tbody>
-              
+
               <?php
-                while ($tupla = mysqli_fetch_array($resultado)) { 
+                while ($tupla = mysqli_fetch_array($resultado)) {
                 $numeroOcorrencias = countSQLAninhado('Codigo', $tabelaOcorrencia, $tabelaCarro, 'Placa_Carro', 'RG_Cliente', 'Placa_Carro', $tupla['RG']);
-                $numeroCarros = countSQLComCondicao($tabelaCarro, 'Placa', 'RG_Cliente', $tupla['RG']); 
+                $numeroCarros = countSQLComCondicao($tabelaCarro, 'Placa', 'RG_Cliente', $tupla['RG']);
               ?>
               <tr>
                 <td><?php echo $tupla['Nome']; ?></td>
@@ -135,6 +135,7 @@
                 <td><?php echo $numeroOcorrencias > 0 ? $numeroOcorrencias : 0 ; ?></td>
               </tr>
               <?php } ?>
+              
             </tbody>
           </table>
         </div>
@@ -146,8 +147,8 @@
   <footer class="page-footer">
     <div class="footer-copyright">
       <div class="container">
-        <span class="left" id="copyright-js"></span> &nbsp; <a target="_blank" href="https://github.com/MateuxLucax/Sicherheit">Sicherheit</a> 
-        <span class="right"><a target="_blank" href="https://opensource.org/licenses/MIT">MIT License</a></span> 
+        <span class="left" id="copyright-js"></span> &nbsp; <a target="_blank" href="https://github.com/MateuxLucax/Sicherheit">Sicherheit</a>
+        <span class="right"><a target="_blank" href="https://opensource.org/licenses/MIT">MIT License</a></span>
       </div>
     </div>
   </footer>
