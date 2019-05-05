@@ -23,6 +23,7 @@ CREATE TABLE IF NOT EXISTS `Ocorrencias` (
     `Placa_Carro` VARCHAR(8) NOT NULL,
     `Data` DATE NOT NULL,
     `Local` VARCHAR(120) NOT NULL,
+    `Valor_Multa` DECIMAL(6, 2) NOT NULL,
     `Descricao` VARCHAR(240) NOT NULL,
     FOREIGN KEY (`Placa_Carro`) REFERENCES `Carros`(`Placa`)
     ON DELETE CASCADE
@@ -36,7 +37,6 @@ INSERT INTO `Carros`
 VALUE ('ASD-1234', 'Fiat', 'Uno', 2001, '124.123.123'),
       ('TRE-7590', 'Ford', 'Focus', 2010, '583.432.843');
       
-      
 INSERT INTO `Ocorrencias` 
-VALUE ( null , 'ASD-1234', '05-08-2018', 'Rio do Sul', 'Furou um pneu'),
-      ( null, 'TRE-7590', '05-12-2018', 'Aurora', 'Bateu o carro em um poste por estar embriagado');
+VALUE ( null , 'ASD-1234', '05-08-2018', 'Rio do Sul', 250.00 ,'Furou um pneu'),
+      ( null, 'TRE-7590', '05-12-2018', 'Aurora', 650.00 ,'Bateu o carro em um poste por estar embriagado');
