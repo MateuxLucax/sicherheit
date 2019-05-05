@@ -124,7 +124,7 @@
 
               <?php
                 while ($tupla = mysqli_fetch_array($resultado)) {
-                $numeroOcorrencias = countSQLAninhado('Codigo', $tabelaOcorrencia, $tabelaCarro, 'Placa_Carro', 'RG_Cliente', 'Placa_Carro', $tupla['RG']);
+                $numeroOcorrencias = countSQLAninhado('Codigo', $tabelaOcorrencia, $tabelaCarro, 'Placa_Carro', 'RG_Cliente', 'Placa', $tupla['RG']);
                 $numeroCarros = countSQLComCondicao($tabelaCarro, 'Placa', 'RG_Cliente', $tupla['RG']);
               ?>
               <tr>
@@ -135,7 +135,7 @@
                 <td><?php echo $numeroOcorrencias > 0 ? $numeroOcorrencias : 0 ; ?></td>
               </tr>
               <?php } ?>
-              
+
             </tbody>
           </table>
         </div>
