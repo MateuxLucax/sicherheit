@@ -54,7 +54,7 @@
     <ul class="sidenav" id="mobile-sidenav">
         <li><a href="index.php"><i class="material-icons">dashboard</i>Painel de controle</a></li>
         <li><a href="clientes.php"><i class="material-icons">assignment_ind</i>Clientes</a></li>
-        <li><a class="active" href="carros.php"><i class="material-icons">directions_car</i>Carros</a></li>
+        <li><a href="carros.php"><i class="material-icons">directions_car</i>Carros</a></li>
         <li><a class="active" href="ocorrencias.php"><i class="material-icons">commute</i>Ocorrências</a></li>
     </ul>
 
@@ -141,6 +141,8 @@
                             <th>Placa do carro</th>
                             <th>Data</th>
                             <th>Local</th>
+                            <th>Valor da multa (em R$)</th>
+                            <th>Valor da multa (em USD)</th>
                             <th>Descrição</th>
                             <th></th>
                             <th></th>
@@ -154,7 +156,12 @@
                             <td><?php echo $tupla['Placa_Carro']; ?></td>
                             <td><?php echo converterData($tupla['Data']); ?></td>
                             <td><?php echo $tupla['Local']; ?></td>
-                            <td><?php echo $tupla['Descricao']; ?></a></td>
+                            <td>R$ <?php echo number_format($tupla['Valor_Multa'], 2, ',', '.'); ?></td>
+                            <td>$ <?php  
+                                    $multaDolar = converterDolar($nomeTabela, 'Valor_Multa', 'Codigo', $tupla['Codigo']);
+                                    echo number_format($multaDolar, 2, '.', ',');
+                                  ?></td>
+                            <td><?php echo $tupla['Descricao']; ?></td>
                             <!-- Alterar -->
                             <td>
                                 <a class="modal-trigger alterar" href="#alterar<?php echo $tupla['Codigo']; ?>"><i class="material-icons">create</i></a>
@@ -172,20 +179,26 @@
                                                 </div>
                                                 <div class="col s12">
                                                     <div class="input-field">
-                                                        <input required id="data<?php echo $tupla['codigo']; ?>" type="text" name="data" value="<?php echo converterData($tupla['Data']); ?>" class="validate" data-mask="00/00/0000">
-                                                        <label for="data<?php echo $tupla['codigo']; ?>">Data</label>
+                                                        <input required id="data<?php echo $tupla['Codigo']; ?>" type="text" name="data" value="<?php echo converterData($tupla['Data']); ?>" class="validate" data-mask="00/00/0000">
+                                                        <label for="data<?php echo $tupla['Codigo']; ?>">Data</label>
                                                     </div>
                                                 </div>
                                                 <div class="col s12">
                                                     <div class="input-field">
-                                                        <input required id="local<?php echo $tupla['codigo']; ?>" type="text" name="local" value="<?php echo $tupla['Local']; ?>" class="validate">
-                                                        <label for="local<?php echo $tupla['codigo']; ?>">Local</label>
+                                                        <input required id="local<?php echo $tupla['Codigo']; ?>" type="text" name="local" value="<?php echo $tupla['Local']; ?>" class="validate">
+                                                        <label for="local<?php echo $tupla['Codigo']; ?>">Local</label>
                                                     </div>
                                                 </div>
                                                 <div class="col s12">
                                                     <div class="input-field">
-                                                        <textarea required id="descriacao<?php echo $tupla['codigo']; ?>" name="descricao" class="materialize-textarea"><?php echo $tupla['Descricao']; ?></textarea>
-                                                        <label for="descriacao<?php echo $tupla['codigo']; ?>">Descrição</label>
+                                                        <textarea required id="descriacao<?php echo $tupla['Codigo']; ?>" name="descricao" class="materialize-textarea"><?php echo $tupla['Descricao']; ?></textarea>
+                                                        <label for="descriacao<?php echo $tupla['Codigo']; ?>">Descrição</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col s12">
+                                                    <div class="input-field">
+                                                        <input required id="valorMulta<?php echo $tupla['Codigo']; ?>" type="number" step="0.01" name="valorMulta" value="<?php echo $tupla['Valor_Multa']; ?>" class="validate">
+                                                        <label for="valorMulta<?php echo $tupla['Codigo']; ?>">Valor da Multa (em R$)</label>
                                                     </div>
                                                 </div>
                                             </div>
@@ -222,7 +235,7 @@
                                 <td>
                                     <span class="title left-align">Adicionar</span>
                                 </td>
-                                <td></td><td></td><td></td><td></td><td></td>
+                                <td></td><td></td><td></td><td></td><td></td><td></td>
                                 <td>
                                     <a class="modal-trigger adicionar" href="#adicionar"><i class="material-icons">add_circle</i></a>
                                     <div id="adicionar" class="modal modal-fixed-footer">
@@ -253,6 +266,12 @@
                                                         <div class="input-field">
                                                             <textarea required id="descriacao" name="descricao" class="materialize-textarea"></textarea>
                                                             <label for="descriacao">Descrição</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col s12">
+                                                        <div class="input-field">
+                                                            <input required id="valorMulta" name="valorMulta" type="number" step="0.01" class="validate">
+                                                            <label for="valorMulta">Valor da Multa (em R$)</label>
                                                         </div>
                                                     </div>
                                                 </div>
