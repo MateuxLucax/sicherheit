@@ -180,12 +180,6 @@
                                                     </div>
                                                     <div class="col s12">
                                                         <div class="input-field">
-                                                            <input required name="rg" id="rg<?php echo $tupla['RG']; ?>" type="text" value="<?php echo $tupla['RG']; ?>" class="validate" data-mask="000.000.000">
-                                                            <label for="rg<?php echo $tupla['RG']; ?>">RG</label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col s12">
-                                                        <div class="input-field">
                                                             <textarea required name="endereco" id="endereco<?php echo $tupla['RG']; ?>" class="materialize-textarea"><?php echo $tupla['Endereco']; ?></textarea>
                                                             <label for="endereco<?php echo $tupla['RG']; ?>">Endereço</label>
                                                         </div>
@@ -198,6 +192,7 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <input type="hidden" name="rg" value="<?php echo $tupla['RG'] ?>" />
                                             <input type="hidden" name="tabela" value="<?php echo $nomeTabela; ?>" />
                                             <input type="hidden" name="pagina" value="<?php echo $pagina; ?>" />
                                             <input type="hidden" name="acao" value="alterar" />
@@ -236,7 +231,7 @@
                                         <div class="modal-content">
                                             <!-- Formulário | Adicionar -->
                                             <form action="acao.php" method="post">
-                                            <h5 class="title">Adicionar cliente</h5>
+                                                <h5 class="title">Adicionar cliente</h5>
                                                 <div class="row">
                                                     <div class="col s12">
                                                         <div class="input-field">

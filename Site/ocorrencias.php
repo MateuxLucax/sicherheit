@@ -235,7 +235,7 @@
                                 <td>
                                     <span class="title left-align">Adicionar</span>
                                 </td>
-                                <td></td><td></td><td></td><td></td><td></td><td></td>
+                                <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
                                 <td>
                                     <a class="modal-trigger adicionar" href="#adicionar"><i class="material-icons">add_circle</i></a>
                                     <div id="adicionar" class="modal modal-fixed-footer">

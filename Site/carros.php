@@ -205,12 +205,6 @@
                                                 <div class="row">
                                                     <div class="col s12">
                                                         <div class="input-field">
-                                                            <input required name="placa" id="placa<?php echo $tupla['Placa']; ?>" type="text" value="<?php echo $tupla['Placa'];?>" class="validate"  data-mask="SSSS-0000">
-                                                            <label for="placa<?php echo $tupla['Placa']; ?>">Placa</label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col s12">
-                                                        <div class="input-field">
                                                             <input required name="fabricante" id="fabricante<?php echo $tupla['Placa']; ?>" type="text" value="<?php echo $tupla['Fabricante'];?>" class="validate">
                                                             <label for="fabricante<?php echo $tupla['Placa']; ?>">Fabricante</label>
                                                         </div>
@@ -235,6 +229,7 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <input type="hidden" name="placa" value="<?php echo $tupla['Placa']; ?>" />
                                             <input type="hidden" name="tabela" value="<?php echo $nomeTabela; ?>" />
                                             <input type="hidden" name="pagina" value="<?php echo $pagina; ?>" />
                                             <input type="hidden" name="acao" value="alterar" />

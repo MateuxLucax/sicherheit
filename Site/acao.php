@@ -40,8 +40,7 @@ if ($tabela == $tabelaCliente) {
         $endereco = $_POST['endereco'];
         $telefone = $_POST['telefone'];
         $sql = "UPDATE  ". $tabela.
-               " SET  RG = '". $RG. "', 
-                      CPF = '". $CPF. "', 
+               " SET  CPF = '". $CPF. "', 
                       Nome =  '". $nome. "', 
                       Endereco =  '". $endereco."', 
                       Telefone =  '". $telefone."' 
@@ -83,8 +82,7 @@ elseif ($tabela == $tabelaCarro) {
         $ano = $_POST['ano'];
         $rgCliente = $_POST['rgCliente']; // Chave estrangeira
         $sql = "UPDATE  ". $tabela.
-               " SET  Placa = '". $placa. "', 
-                      Fabricante = '". $fabricante. "', 
+               " SET  Fabricante = '". $fabricante. "', 
                       Modelo =  '". $modelo. "', 
                       Ano =  ". $ano.", 
                       RG_Cliente =  '". $rgCliente."' 
@@ -138,6 +136,7 @@ elseif ($tabela == $tabelaOcorrencia) {
 
 }
 
+echo $sql;
 mysqli_query($conexao, $sql);
 header ("location:". $pagina);
 
