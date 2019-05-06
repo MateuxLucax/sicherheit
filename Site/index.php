@@ -135,7 +135,7 @@
                 <td><?php echo $numeroOcorrencias > 0 ? $numeroOcorrencias : 0 ; ?></td>
               </tr>
               <?php } ?>
-
+              
             </tbody>
           </table>
         </div>

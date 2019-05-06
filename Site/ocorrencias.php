@@ -10,7 +10,7 @@
 	$filtro = isset($_POST['filtro']) ? $_POST['filtro'] : 'nenhum';
 	$pagina = 'ocorrencias.php';
     $nomeTabela = $tabelaOcorrencia;
-
+    
 ?>
 
 <head>
@@ -25,7 +25,7 @@
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
-
+  
   <!-- CSS -->
   <link href="assets/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 </head>
@@ -33,7 +33,7 @@
 <body>
 
 <header>
-
+  
     <!-- Cabeçalho -->
     <div class="navbar-fixed">
         <nav>
@@ -49,7 +49,7 @@
             </div>
         </nav>
     </div>
-
+    
     <!-- Sidenav mobile -->
     <ul class="sidenav" id="mobile-sidenav">
         <li><a href="index.php"><i class="material-icons">dashboard</i>Painel de controle</a></li>
@@ -110,7 +110,7 @@
 
     <!-- Filtros e SQL -->
     <?php
-
+        
         if ($pesquisa == '') {
             $sql = "SELECT * FROM ". $nomeTabela;
         } elseif ($filtro == 'Codigo') {
@@ -121,11 +121,11 @@
             $sql = "SELECT * FROM ". $nomeTabela. " WHERE Local LIKE '%". $pesquisa. "%' ORDER BY ". $filtro;
         } else {
             $sql = "SELECT * FROM ". $nomeTabela. " WHERE Codigo LIKE '%". $pesquisa. "%'
-                                                        OR Data LIKE '". $pesquisa. "%'
-                                                        OR Local LIKE'%". $pesquisa. "%'";
+                                                        OR Data LIKE '". $pesquisa. "%' 
+                                                        OR Local LIKE'%". $pesquisa. "%'"; 
         }
         $resultado = mysqli_query ($conexao, $sql);
-
+        
     ?>
 
     <!-- Tabela-->
@@ -133,7 +133,7 @@
         <div class="container">
             <div class="row">
                 <div class="col s12">
-
+                    
                 <table class="highlight centered responsive-table">
                         <thead>
                         <tr class="title">
@@ -148,7 +148,7 @@
                             <th></th>
                         </tr>
                         </thead>
-
+                
                         <tbody>
                         <?php while ($tupla = mysqli_fetch_array($resultado)){ ?>
                         <tr>
@@ -157,7 +157,7 @@
                             <td><?php echo converterData($tupla['Data']); ?></td>
                             <td><?php echo $tupla['Local']; ?></td>
                             <td>R$ <?php echo number_format($tupla['Valor_Multa'], 2, ',', '.'); ?></td>
-                            <td>$ <?php
+                            <td>$ <?php  
                                     $multaDolar = converterDolar($nomeTabela, 'Valor_Multa', 'Codigo', $tupla['Codigo']);
                                     echo number_format($multaDolar, 2, '.', ',');
                                   ?></td>
@@ -295,12 +295,12 @@
     </div>
 
 </main>
-
+    
 <footer class="page-footer">
     <div class="footer-copyright">
         <div class="container">
-            <span class="left" id="copyright-js"></span> &nbsp; <a target="_blank" href="https://github.com/MateuxLucax/Sicherheit">Sicherheit</a>
-            <span class="right"><a target="_blank" href="https://opensource.org/licenses/MIT">MIT License</a></span>
+            <span class="left" id="copyright-js"></span> &nbsp; <a target="_blank" href="https://github.com/MateuxLucax/Sicherheit">Sicherheit</a> 
+            <span class="right"><a target="_blank" href="https://opensource.org/licenses/MIT">MIT License</a></span> 
         </div>
     </div>
 </footer>
