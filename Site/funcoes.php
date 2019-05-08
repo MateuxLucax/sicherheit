@@ -112,7 +112,7 @@
 
 	// Realiza a pesquisa do menor campo
 	function minSQL($tabela, $colunaAvaliada) {
-		$sql = "SELECT MAX(`". $colunaAvaliada . "`)
+		$sql = "SELECT MIN(`". $colunaAvaliada . "`)
 				FROM `". $tabela ."`";
 		while ($tupla = mysqli_fetch_array(mysqli_query($GLOBALS['conexao'], $sql))) {
 			return $tupla[0];
