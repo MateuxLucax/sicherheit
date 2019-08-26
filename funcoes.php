@@ -41,7 +41,7 @@
 		}
 	}
 
-	// Realiza um coun()
+	// Realiza um count()
 	function countSQL($tabela, $chavePrimaria) {
 		$sql = "SELECT COUNT(`". $chavePrimaria. "`) 
 			    FROM `". $tabela. "`";
