@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS `Carros` (
     `Ano` INT(4) NOT NULL,
     `RG_Cliente` VARCHAR(15) NOT NULL,
     FOREIGN KEY (`RG_Cliente`) REFERENCES `Clientes`(`RG`)
-    ON DELETE CASCADE
+    	ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS `Ocorrencias` (
@@ -26,17 +26,5 @@ CREATE TABLE IF NOT EXISTS `Ocorrencias` (
     `Valor_Multa` DECIMAL(6, 2) NOT NULL,
     `Descricao` VARCHAR(240) NOT NULL,
     FOREIGN KEY (`Placa_Carro`) REFERENCES `Carros`(`Placa`)
-    ON DELETE CASCADE
-);	
-
-INSERT INTO `Clientes`
-VALUE ('124.123.123', '123.123.124-42', 'Carlos', 'Rua Carlos Gomes, 24, Rio do Oeste', '(47) 91234-1234'),
-      ('583.432.843', '043.216.756-42', 'Pedro', 'Rua Pedro Albino, 25, Rio do Sul', '(47) 99548-4837');
-
-INSERT INTO `Carros` 
-VALUE ('ASD-1234', 'Fiat', 'Uno', 2001, '124.123.123'),
-      ('TRE-7590', 'Ford', 'Focus', 2010, '583.432.843');
-      
-INSERT INTO `Ocorrencias` 
-VALUE ( null , 'ASD-1234', '05-08-2018', 'Rio do Sul', 250.00 ,'Furou um pneu'),
-      ( null, 'TRE-7590', '05-12-2018', 'Aurora', 650.00 ,'Bateu o carro em um poste por estar embriagado');
+    	ON DELETE CASCADE
+);
